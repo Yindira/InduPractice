@@ -59,16 +59,23 @@ public class AddrDrpDown {
 			for (WebElement x : countries) {
 
 				x.click();
-				boolean addrDispalyedStatus = driver.findElement(By.id("address")).isDisplayed();
+				String addressText = driver.findElement(By.id("address")).getText();
+				boolean addrDispalyedStatus1 = addressText.isEmpty();
+				//boolean addrDispalyedStatus = driver.findElement(By.id("address")).isDisplayed();
+				
+				
 
-				if ((addrDispalyedStatus) && (!(x.getText().equals("Select")))) {
+				if ((!(addrDispalyedStatus1)) && (!(x.getText().equals("Select")))) {
 					System.out.println(x.getText());
 					System.out.println("Address present");
+					//System.out.println(addressText);
+					System.out.println("");
+					
 				} else {
 					if (x.getText().equals("Select")) {
 						continue;
 					}
-
+					System.out.println(x.getText());
 					System.out.println("Address not present");
 				}
 
