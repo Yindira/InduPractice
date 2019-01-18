@@ -29,30 +29,25 @@ public class AddrDrpDown {
 		driver.findElement(By.xpath("//a[contains(@href,'a2')]")).click();
 		driver.findElement(By.xpath("//a[contains(@href,'branches')]")).click();
 
+		// Getting all the values from region dropdown
 		WebElement region = driver.findElement(By.id("select1"));
-
 		Select select1 = new Select(region);
 		List<WebElement> regions = select1.getOptions();
-		
 
-		WebElement country = driver.findElement(By.name("select2"));
-
-		// List<WebElement> countries = select2.getOptions();
-		
-		 
-
-		for (WebElement y: regions) {
+		for (WebElement y : regions) {
 
 			y.click();
-			
-			if(!(y.getText().equals("Select"))){
-					
-			System.out.println("-------------------");
-			System.out.println(y.getText());
-			System.out.println("-------------------");
-			
+
+			if (!(y.getText().equals("Select"))) {
+
+				System.out.println("-------------------");
+				System.out.println(y.getText());
+				System.out.println("-------------------");
+
 			}
 
+			// getting all values from country dropdown
+			WebElement country = driver.findElement(By.name("select2"));
 			Select select2 = new Select(country);
 			List<WebElement> countries = select2.getOptions();
 
@@ -61,16 +56,14 @@ public class AddrDrpDown {
 				x.click();
 				String addressText = driver.findElement(By.id("address")).getText();
 				boolean addrDispalyedStatus1 = addressText.isEmpty();
-				//boolean addrDispalyedStatus = driver.findElement(By.id("address")).isDisplayed();
-				
-				
+				// boolean addrDispalyedStatus =driver.findElement(By.id("address")).isDisplayed();
 
 				if ((!(addrDispalyedStatus1)) && (!(x.getText().equals("Select")))) {
 					System.out.println(x.getText());
 					System.out.println("Address present");
-					//System.out.println(addressText);
+					// System.out.println(addressText);
 					System.out.println("");
-					
+
 				} else {
 					if (x.getText().equals("Select")) {
 						continue;
